@@ -15,6 +15,9 @@ if __name__ == "__main__":
         "-o", type=str, help="Output filename.", default="qrcode.png"
     )
     parser.add_argument(
+        "-p", type=str, help="Path to your own logo.", default="None"
+    )
+    parser.add_argument(
         "--logo-size", type=float, default=0.22, help="Proportion of logo [0,1]."
     )
     args = parser.parse_args()
@@ -32,7 +35,10 @@ if __name__ == "__main__":
     elif args.l == "twitter":
         Logo_link = 'icons/twitter_black_square.png'
     elif args.l == "None":
-        Logo_link = None
+        if args.p == "None":
+            Logo_link = None
+        else:
+            Logo_link = args.p
     elif args.l == "paper":
         Logo_link = "icons/paper_icon.png"
     else:
